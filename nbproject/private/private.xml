@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/src/java/Conexion/ConexionDB.java</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/web/login.jsp</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/web/index.jsp</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/src/java/Modelo/ProductoDB.java</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/src/java/Modelo/UsuarioDB.java</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/src/java/Modelo/Articulo.java</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/src/java/Controlador/ServletAgregarCategoria.java</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/src/java/Controlador/ServletControlador.java</file>
-            <file>file:/C:/Users/Leider%20Castillo/Documents/Trabajo/Freelancer/CuackProyecto/src/java/Modelo/Usuario.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

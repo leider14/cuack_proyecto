@@ -1,12 +1,13 @@
 package Controlador;
-
-import Modelo.UsuarioDB;
+import Modelo.*;
+import DAO.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Routes;
 
 @WebServlet("/ServletAgregarUsuario")
 public class ServletAgregarUsuario extends HttpServlet {
@@ -23,9 +24,9 @@ public class ServletAgregarUsuario extends HttpServlet {
             boolean resultado = UsuarioDB.eliminarUsuario(idUsuario);
 
             if (resultado) {
-                response.sendRedirect("mensaje.jsp?men=Usuario eliminado con éxito");
+                response.sendRedirect(Routes.MyComponentDialogAdmin + "?men=Usuario eliminado con éxito");
             } else {
-                response.sendRedirect("mensaje.jsp?men=Error al eliminar el usuario");
+                response.sendRedirect(Routes.MyComponentDialogAdmin + "?men=Error al eliminar el usuario");
             }
         }
 
@@ -38,9 +39,9 @@ public class ServletAgregarUsuario extends HttpServlet {
             boolean resultado = UsuarioDB.insertarUsuario(usuario, clave, nivel);
 
             if (resultado) {
-                response.sendRedirect("mensaje.jsp?men=Usuario registrado con éxito");
+                response.sendRedirect(Routes.MyComponentDialogAdmin+"?men=Usuario registrado con éxito");
             } else {
-                response.sendRedirect("mensaje.jsp?men=Error al registrar el usuario");
+                response.sendRedirect(Routes.MyComponentDialogAdmin+"?men=Error al registrar el usuario");
             }
         }
     }

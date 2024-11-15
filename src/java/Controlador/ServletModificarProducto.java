@@ -1,8 +1,6 @@
 package Controlador;
-
-
-import Modelo.ProductoDB;
-import Modelo.Productos;
+import Modelo.*;
+import DAO.*;
 import java.io.File;
 import java.io.IOException;
 import javax.servlet.http.Part;
@@ -11,19 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Routes;
 
 @WebServlet(name = "ServletModificarProducto", urlPatterns = {"/ServletModificarProducto"})
 public class ServletModificarProducto extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.RegistrarProducto(request, response);
@@ -45,9 +35,9 @@ public class ServletModificarProducto extends HttpServlet {
 
         boolean rpta = ProductoDB.editarProducto( idProduct, p);
         if(rpta == true){
-            response.sendRedirect("mensaje.jsp?men=Se actualizó con Exito");
+            response.sendRedirect( Routes.MyComponentDialogAdmin + "?men=Se actualizó con Exito");
         }else{
-            response.sendRedirect("mensaje.jsp?men=Error al Actualizar");
+            response.sendRedirect( Routes.MyComponentDialogAdmin + "?men=Error al Actualizar");
         }
 
     }

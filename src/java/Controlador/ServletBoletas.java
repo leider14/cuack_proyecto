@@ -1,11 +1,6 @@
 package Controlador;
-
-import Modelo.Articulo;
-import Modelo.Boleta;
-import Modelo.BoletaDB;
-import Modelo.ProductoDB;
-import Modelo.Productos;
-
+import Modelo.*;
+import DAO.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

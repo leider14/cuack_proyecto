@@ -1,5 +1,6 @@
 package Controlador;
 
+import DAO.ProductoDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Modelo.*;
 import java.util.*;
+import utils.Routes;
 
 @WebServlet(name = "ServletControlador", urlPatterns = {"/ServletControlador"})
 public class ServletControlador extends HttpServlet {
@@ -61,16 +63,16 @@ public class ServletControlador extends HttpServlet {
 
         // Redirigir según el resultado
         if (rpta) {
-            response.sendRedirect("mensaje.jsp?men=Se registró con exito");
+            response.sendRedirect(Routes.MyComponentDialogAdmin+"?men=Se registró con exito");
         } else {
-            response.sendRedirect("mensaje.jsp?men=Error al Registrar");
+            response.sendRedirect(Routes.MyComponentDialogAdmin + "?men=Error al Registrar");
         }
     }
     
     private void ComprarProducto(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.sendRedirect("mensaje2.jsp?men=La compra se realizo con exito");
+        response.sendRedirect(Routes.MyComponentDialogUser+"?men=La compra se realizo con exito");
         
     }
     

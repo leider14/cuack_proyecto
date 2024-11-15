@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import utils.Routes;
 
 
 @WebServlet(name = "ServletAgregarCarrito", urlPatterns = {"/ServletAgregarCarrito"})
@@ -25,9 +26,6 @@ public class ServletAgregarCarrito extends HttpServlet {
         int codigoProducto = Integer.parseInt(request.getParameter("codigoProducto"));
         
         HttpSession sesion = request.getSession(true);
-        
-        //Creamos un ArrayList llamado articulos, preguntamos si la variable sesion esta null
-        //Si esta null, creamos un nuevo ArrayList, si no esta nulo, recuperamos el existente
         
         ArrayList <Articulo> articulos = sesion.getAttribute("carrito") == null ? new ArrayList<>() : (ArrayList)sesion.getAttribute("carrito");
         
@@ -53,7 +51,7 @@ public class ServletAgregarCarrito extends HttpServlet {
         
         sesion.setAttribute("carrito", articulos);
         
-        response.sendRedirect("carrito.jsp");
+        response.sendRedirect(Routes.UserCarrito);
         
     }
 

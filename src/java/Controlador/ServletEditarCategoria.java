@@ -1,12 +1,6 @@
 package Controlador;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
-import Modelo.Categoria;
-import Modelo.CategoriaDB;
+import Modelo.*;
+import DAO.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Routes;
 
 @WebServlet(urlPatterns = {"/ServletEditarCategoria"})
 public class ServletEditarCategoria extends HttpServlet {
@@ -25,9 +20,9 @@ public class ServletEditarCategoria extends HttpServlet {
         
         boolean rpta = CategoriaDB.editarCategoria(idCategoria, nombreCategoria);
         if(rpta == true){
-            response.sendRedirect("mensaje.jsp?men=Se actualizó con Exito");
+            response.sendRedirect(Routes.MyComponentDialogAdmin+"?men=Se actualizó con Exito");
         }else{
-            response.sendRedirect("mensaje.jsp?men=Error al Actualizar");
+            response.sendRedirect(Routes.MyComponentDialogAdmin+"?men=Error al Actualizar");
         }
 
     }

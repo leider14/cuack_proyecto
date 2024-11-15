@@ -1,5 +1,6 @@
-<%@page import="Modelo.Usuario"%>
-<%@page import="Modelo.UsuarioDB"%>
+<%@page import="utils.Routes"%>
+<%@page import="Modelo.*"%>
+<%@page import="DAO.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page session="true" %>
 <!DOCTYPE html>
@@ -103,54 +104,54 @@
     </style>
     <body>
         <div id="containerlogin">
-            <img src="imagenes/iconos/logo.png" alt="logo"/>
+            <img src="./imagenes/iconos/logo.png" alt="logo"/>
             <h2>Iniciar Sesión</h2>
-            <form action="login.jsp">
+            <form action="<%= Routes.LoginPage %>">
                 <input type="text" class="il" id="search" name="txtUsuario" placeholder="Usuario" >
                 <input class="il" placeholder="Contraseña" type="password" name="txtContra" >
                 <%
                     try {
-    UsuarioDB udb = new UsuarioDB();
-    if (request.getParameter("btnCrearCuenta") != null) {
-        response.sendRedirect("createCount.jsp");
-    }
-    if (request.getParameter("btnIngresar") != null) {
-        String nombre = request.getParameter("txtUsuario");
-        String contra = request.getParameter("txtContra");
-        HttpSession sesion = request.getSession();
-        Usuario usr = udb.obtenerUsuario(nombre, contra);
-        System.out.println(usr);
-        if(usr.getNivel() != 0) {
-            switch (usr.getNivel()) {
-                case 1:
-                    sesion.setAttribute("user", nombre);
-                    sesion.setAttribute("nivel", "1");
-                    sesion.setAttribute("idUser", usr.getId());
-                    response.sendRedirect("index.jsp");
-                    break;
-                case 2:
-                    sesion.setAttribute("user", nombre);
-                    sesion.setAttribute("nivel", "1");
-                    sesion.setAttribute("idUser", usr.getId());
-                    response.sendRedirect("indexUser.jsp");
-                    break;
-                default:
-                    out.write("<p id='messageLogin'>Comprueba tu usuario y clave</p>");
-                    break;
-            }
-        } else {
-            out.write("<p id='messageLogin'>Comprueba tu usuario y clave</p>");
-        }
-    } else {
-        out.write("<p id='messageLoginHide'>.</p>");
-    }
-} catch(Exception e) {
-    out.write("<p id='messageLogin'>Comprueba tu usuario y clave</p>");
-}
+                        UsuarioDB udb = new UsuarioDB();
+                        if (request.getParameter("btnCrearCuenta") != null) {
+                            response.sendRedirect(Routes.CreateCount);
+                        }
+                        if (request.getParameter("btnIngresar") != null) {
+                            String nombre = request.getParameter("txtUsuario");
+                            String contra = request.getParameter("txtContra");
+                            HttpSession sesion = request.getSession();
+                            Usuario usr = udb.obtenerUsuario(nombre, contra);
+                            System.out.println(usr);
+                            if (usr.getNivel() != 0) {
+                                switch (usr.getNivel()) {
+                                    case 1:
+                                        sesion.setAttribute("user", nombre);
+                                        sesion.setAttribute("nivel", "1");
+                                        sesion.setAttribute("idUser", usr.getId());
+                                        response.sendRedirect(Routes.AdminHomePage);
+                                        break;
+                                    case 2:
+                                        sesion.setAttribute("user", nombre);
+                                        sesion.setAttribute("nivel", "1");
+                                        sesion.setAttribute("idUser", usr.getId());
+                                        response.sendRedirect(Routes.UserHomePage);
+                                        break;
+                                    default:
+                                        out.write("<p id='messageLogin'>Comprueba tu usuario y clave</p>");
+                                        break;
+                                }
+                            } else {
+                                out.write("<p id='messageLogin'>Comprueba tu usuario y clave</p>");
+                            }
+                        } else {
+                            out.write("<p id='messageLoginHide'>.</p>");
+                        }
+                    } catch (Exception e) {
+                        out.write("<p id='messageLogin'>Comprueba tu usuario y clave</p>");
+                    }
 
-if (request.getParameter("cerrar") != null) {
-    session.invalidate();
-}
+                    if (request.getParameter("cerrar") != null) {
+                        session.invalidate();
+                    }
 
                 %>
                 <div id="buttons-row">
